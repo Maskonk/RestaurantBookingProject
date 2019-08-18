@@ -1,6 +1,6 @@
 import React from "react";
 
-const AllCustomers = () => (
+const ShowBookings = () => (
  <div>
    <h4>Page for displaying list of all customers</h4>
 
@@ -8,4 +8,4 @@ const AllCustomers = () => (
 );
 
 
-export default AllCustomers;
+export default ShowBookings;
