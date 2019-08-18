@@ -6,11 +6,17 @@ const NavBar = () => (
     <li>
       <Link to="/">Home</Link>
     </li>
+      <li>
+          <Link to={"/customers/new"}> New Customer</Link>
+      </li>
     <li>
-      <Link to="/customers">Customers</Link>
+      <Link to="/customers">All Customers</Link>
     </li>
+      <li>
+          <Link to="bookings/new"> New Booking </Link>
+      </li>
     <li>
-      <Link to="/bookings">Bookings</Link>
+      <Link to="/bookings"> All Bookings</Link>
     </li>
   </ul>
 );

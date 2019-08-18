@@ -4,6 +4,8 @@ import Home from "../Components/Home";
 import AllBooking from "../Components/AllBookings";
 import AllCustomers from "../Components/AllCustomers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NewCustomer from "../Components/NewCustomer";
+import NewBooking from "../Components/NewBooking";
 
 class Main extends Component{
 
@@ -19,7 +21,9 @@ class Main extends Component{
                     <NavBar/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
+                        <Route path="/customers/new" component={NewCustomer}/>
                         <Route path="/customers" component={AllCustomers}/>
+                        <Route path="/bookings/new" component={NewBooking}/>
                         <Route path="/bookings" component={AllBooking}/>
                     </Switch>
                 </Fragment>
