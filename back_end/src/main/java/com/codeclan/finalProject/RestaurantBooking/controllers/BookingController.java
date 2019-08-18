@@ -22,4 +22,9 @@ public class BookingController {
         return bookingRepository.findBookingByDate(date);
     }
 
+    @GetMapping(value = "")
+    public List<Booking> getBookings() {
+        return bookingRepository.findByOrderByDateAsc();
+    }
+
 }
