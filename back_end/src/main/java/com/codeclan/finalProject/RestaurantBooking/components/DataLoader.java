@@ -31,12 +31,15 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args){
 
         Customer customer = new Customer("Bob", "07999999999");
+        customer.setNoOfVisits(1);
         customerRepository.save(customer);
 
         Customer customer2 = new Customer("Sam", "07888888888");
+        customer2.setNoOfVisits(8);
         customerRepository.save(customer2);
 
         Customer customer3 = new Customer("Jane", "07777777777");
+        customer3.setNoOfVisits(3);
         customerRepository.save(customer3);
 
         Customer customer4 = new Customer("Henry", "07121121121");
