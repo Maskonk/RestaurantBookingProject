@@ -11,7 +11,14 @@ class Main extends Component{
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            bookings: []
+        }
+    }
+
+    componentDidMount() {
+        let url = "http://localhost:8080/bookings";
+        fetch(url).then(res => res.json).then(data => this.setState({bookings: data})).catch(err => console.error())
     }
 
     render() {
