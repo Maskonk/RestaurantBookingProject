@@ -1,5 +1,8 @@
 package com.codeclan.finalProject.RestaurantBooking.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.persistence.Table;
 
@@ -24,10 +27,12 @@ public class Booking {
     @Column(name = "comments")
     private String comments;
 
+    @JsonIgnoreProperties("bookings")
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    @JsonIgnoreProperties("bookings")
     @ManyToOne
     @JoinColumn(name = "table_id", nullable = false)
     private com.codeclan.finalProject.RestaurantBooking.models.Table table;
