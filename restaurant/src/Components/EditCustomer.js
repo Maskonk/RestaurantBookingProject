@@ -44,16 +44,25 @@ class EditCustomer extends Component{
                 { this.state.editable ?
                     <div> <br />
                         <h4> Edit customer </h4>
-                    <form>
+                    <form onSubmit={this.handleSubmit()}>
                         <label htmlFor="name"> Name: </label>
-                        <input type="text" value={this.props.customer.name} className="name"/> <br />
+                        <input type="text" defaultValue={this.props.customer.name} className="name" /> <br />
                         <label htmlFor="contact"> Phone number: </label>
-                        <input type="text" value={this.props.customer.contact} className="contact"/> <br/>
+                        <input type="text" defaultValue={this.props.customer.contact} className="contact"/> <br/>
                         <input type="submit" value="Save"/>
                     </form> </div> : null
                 }
             </Fragment>
         )
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const customer = {
+            name: event.target.name.value,
+            contact: event.target.contact.value,
+            noOfVisits: this.props.customer.noOfVisits
+        }
     }
 
     handleEdit() {
