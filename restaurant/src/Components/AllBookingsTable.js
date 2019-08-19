@@ -11,6 +11,7 @@ const AllBookingsTable = ({bookings}) => {
       <td>{booking.time}</td>
       <td>{booking.partySize}</td>
       <td>{booking.comments}</td>
+      <td><Link to={"/bookings/edit/"}><button>Show details</button></Link></td>
     </tr>
   });
 
