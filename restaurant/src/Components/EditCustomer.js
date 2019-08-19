@@ -1,6 +1,9 @@
 import React, {Fragment} from 'react';
 
-const EditCustomer = (props) => {
+const EditCustomer = ({customer}) => {
+    if (!customer) {
+        return <p> Not found </p>
+    }
     return (
         <Fragment>
             <table>
@@ -10,6 +13,11 @@ const EditCustomer = (props) => {
                         <th>Phone Number</th>
                         <th>Number of visits</th>
                     </tr>
+                <tr>
+                    <td>{customer.name}</td>
+                    <td>{customer.contact}</td>
+                    <td>{customer.noOfVisits}</td>
+                </tr>
                 </tbody>
             </table>
         </Fragment>
