@@ -10,6 +10,7 @@ class EditCustomer extends Component{
             contact: null
         };
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleSubmit= this.handleSubmit.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -44,11 +45,11 @@ class EditCustomer extends Component{
                 { this.state.editable ?
                     <div> <br />
                         <h4> Edit customer </h4>
-                    <form onSubmit={this.handleSubmit()}>
+                    <form onSubmit={this.handleSubmit}>
                         <label htmlFor="name"> Name: </label>
-                        <input type="text" defaultValue={this.props.customer.name} className="name" /> <br />
+                        <input type="text" defaultValue={this.props.customer.name} name="name" /> <br />
                         <label htmlFor="contact"> Phone number: </label>
-                        <input type="text" defaultValue={this.props.customer.contact} className="contact"/> <br/>
+                        <input type="text" defaultValue={this.props.customer.contact} name="contact"/> <br/>
                         <input type="submit" value="Save"/>
                     </form> </div> : null
                 }
@@ -58,6 +59,7 @@ class EditCustomer extends Component{
 
     handleSubmit(event) {
         event.preventDefault();
+        this.handleEdit();
         const customer = {
             name: event.target.name.value,
             contact: event.target.contact.value,
