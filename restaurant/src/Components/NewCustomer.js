@@ -3,7 +3,7 @@ import CustomerForm from './CustomerForm';
 
 const NewCustomer = (props) => (
  <div>
-   <h4>Page for adding New Customer</h4>
+   <h4>Add Details of New Customer Below</h4>
    <CustomerForm onCustomerSubmit={props.onCustomerSubmit}/>
    <p>{props.onCustomerSubmit}</p>
  </div>

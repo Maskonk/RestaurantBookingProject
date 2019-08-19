@@ -23,40 +23,12 @@ class CustomerForm extends Component {
       .then(res => res.json())
       .then(customer => {
         console.log(customer)
-        
+        this.props.onCustomerSubmit(customer)
       })
 
 
     this.setState({name: '', contact:''})
   }
-
-
-//   handleSubmit(event){
-//   event.preventDefault();
-//
-//   const payload = {
-//     species: this.species,
-//     location: this.location,
-//     date: this.date
-//   };
-//
-//   SightingService.postSighting(payload)
-//   .then(sighting => {
-//       eventBus.$emit('sighting-added', sighting);
-//   });
-// }
-
-  // postSighting(payload){
-  //   return fetch(baseURL, {
-  //     method: 'POST',
-  //     body: JSON.stringify(payload),
-  //     headers: { 'Content-Type': 'application/json'}
-  //   })
-  //   .then(res => res.json())
-  // }
-
-
-
 
   handleNameChange(event){
     this.setState({name: event.target.value});
@@ -69,7 +41,6 @@ class CustomerForm extends Component {
   render() {
     return (
       <Fragment>
-        <p>I'm a comment form </p>
         <form className="customer-form" onSubmit={this.handleSubmit}>
           <label for="name-input">Customer Name:</label>
           <input
