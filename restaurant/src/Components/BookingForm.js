@@ -6,7 +6,7 @@ class BookingForm extends Component {
 render() {
   return(
     <Fragment>
-      <h1>RENDER TEST</h1>
+      <p>RENDER TEST</p>
 
 
     </Fragment>
