@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {BrowserRouter as Router, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const CustomersTable = ({customers}) => {
   const customerTable = customers.map(customer =>
