@@ -1,12 +1,12 @@
 import React from "react";
 import AllBookingsTable from "./AllBookingsTable";
 
-const AllBooking = () => (
+const AllBookings = ({bookings}) => (
  <div>
    <h4>Display all Booking</h4>
-   <AllBookingsTable/>
+   <AllBookingsTable bookings={bookings}/>
  </div>
 );
 
 
-export default AllBooking;
+export default AllBookings;

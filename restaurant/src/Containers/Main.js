@@ -1,12 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import NavBar from "../Components/NavBar";
 import Home from "../Components/Home";
-import AllBooking from "../Components/AllBookings";
+import AllBookings from "../Components/AllBookings";
 import AllCustomers from "../Components/AllCustomers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewCustomer from "../Components/NewCustomer";
 import NewBooking from "../Components/NewBooking";
 import EditCustomer from "../Components/EditCustomer"
+import EditBooking from "../Components/EditBooking"
 
 class Main extends Component{
 
@@ -33,6 +34,14 @@ class Main extends Component{
         return null;
     }
 
+    findBookingsById(id) {
+        for (let booking of this.state.bookings) {
+            if (booking.id === parseInt(id)) {
+              return booking;
+            }
+        }
+    }
+
     componentDidMount() {
         let url = "http://localhost:8080/";
         fetch(url + "bookings").then(res => res.json()).then(data => this.setState({bookings: data})).catch(err => console.error())
@@ -55,7 +64,12 @@ class Main extends Component{
                         }}/>
                         <Route path="/customers" render={() => <AllCustomers customers={this.state.customers} />} />
                         <Route path="/bookings/new" component={NewBooking}/>
-                        <Route path="/bookings" component={AllBooking}/>
+                        <Route path="/bookings/edit/:id" render={(props) => {
+                          const id = props.match.params.id;
+                          const booking = this.findBookingsById(id);
+                          return <EditBooking booking={booking} />
+                        }}/>
+                        <Route path="/bookings" render={() => <AllBookings bookings={this.state.bookings} />} />
                     </Switch>
                 </Fragment>
             </Router>

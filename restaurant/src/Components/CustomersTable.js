@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {BrowserRouter as Router, Link} from "react-router-dom";
 
 const CustomersTable = ({customers}) => {
   const customerTable = customers.map(customer =>
@@ -6,7 +7,7 @@ const CustomersTable = ({customers}) => {
     <td>{customer.name}</td>
     <td>{customer.contact}</td>
     <td>{customer.noOfVisits}</td>
-    <td><button>Edit</button></td>
+    <td><Link to={"/customers/edit/" + customer.id}><button>Show details</button></Link></td>
   </tr>});
   return (
       <Fragment>
