@@ -1,6 +1,19 @@
 import React, {Fragment} from 'react';
+import {BrowserRouter as Router, Link} from "react-router-dom";
 
-const AllBookingsTable = (props) => {
+const AllBookingsTable = ({bookings}) => {
+
+  const bookingTable = bookings.map(booking => {
+    return <tr>
+      <td>{booking.customer.name}</td>
+      <td>{booking.table.id}</td>
+      <td>{booking.date}</td>
+      <td>{booking.time}</td>
+      <td>{booking.partySize}</td>
+      <td>{booking.comments}</td>
+    </tr>
+  });
+
   return (
       <Fragment>
         <table>
@@ -13,6 +26,7 @@ const AllBookingsTable = (props) => {
             <th>Party Size</th>
             <th>Comments</th>
           </tr>
+          {bookingTable}
           </tbody>
         </table>
       </Fragment>
