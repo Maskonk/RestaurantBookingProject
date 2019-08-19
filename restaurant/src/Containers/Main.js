@@ -19,10 +19,10 @@ class Main extends Component{
     }
 
     findCustomerById(id) {
-        for (let customer in this.state.customers) {
-            if (this.state.customers[customer].id === parseInt(id)) {
-                console.log(this.state.customers[customer]);
-                return this.state.customers[customer];
+        for (let customer of this.state.customers) {
+            console.log(customer);
+            if (customer.id === parseInt(id)) {
+                return customer;
             }
         }
         return null;
