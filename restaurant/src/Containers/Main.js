@@ -20,7 +20,6 @@ class Main extends Component{
 
     findCustomerById(id) {
         for (let customer of this.state.customers) {
-            console.log(customer);
             if (customer.id === parseInt(id)) {
                 return customer;
             }
