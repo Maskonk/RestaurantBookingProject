@@ -7,8 +7,12 @@ class CustomerForm extends Component {
       name: '',
       contact: ''
     };
+    this.handleNameChange = this.handleNameChange.bind(this);
   }
 
+  handleNameChange(event){
+    this.setState({name: event.target.value});
+  }
 
   render() {
     return (
@@ -21,6 +25,7 @@ class CustomerForm extends Component {
             placeholder="Customer Name..."
             id="name-input"
             value={this.state.name}
+            onChange={this.handleNameChange}
           />
           <br/>
           <label for="tel-number-input">Telephone Number:</label>
