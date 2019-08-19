@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewCustomer from "../Components/NewCustomer";
 import NewBooking from "../Components/NewBooking";
 import EditCustomer from "../Components/EditCustomer"
+import EditBooking from "../Components/EditBooking"
 
 class Main extends Component{
 
@@ -56,6 +57,11 @@ class Main extends Component{
                         }}/>
                         <Route path="/customers" render={() => <AllCustomers customers={this.state.customers} />} />
                         <Route path="/bookings/new" component={NewBooking}/>
+                        <Route path="/bookings/edit/:id" render={(props) => {
+                          const id = props.match.params.id;
+                          const booking = this.findBookingsById(id);
+                          return <EditBooking booking={booking} />
+                        }}/>
                         <Route path="/bookings" render={() => <AllBookings bookings={this.state.bookings} />} />
                     </Switch>
                 </Fragment>
