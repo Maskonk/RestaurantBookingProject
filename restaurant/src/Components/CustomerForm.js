@@ -8,10 +8,15 @@ class CustomerForm extends Component {
       contact: ''
     };
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleContactChange = this.handleContactChange.bind(this);
   }
 
   handleNameChange(event){
     this.setState({name: event.target.value});
+  }
+
+  handleContactChange(event){
+    this.setState({contact: event.target.value})
   }
 
   render() {
@@ -33,6 +38,7 @@ class CustomerForm extends Component {
             type="text"
             placeholder="Telephone Number..."
             value={this.state.contact}
+            onChange={this.handleContactChange}
           />
           <br/>
           <input type="submit" value="Add new customer"/>
