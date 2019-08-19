@@ -16,7 +16,7 @@ class Main extends Component{
         this.state = {
             bookings: [],
             customers: [],
-            tables: []
+            tables: null
         }
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this)
     }
@@ -67,7 +67,7 @@ class Main extends Component{
                         }}/>
                         <Route path="/customers" render={() => <AllCustomers customers={this.state.customers} />} />
                         <Route path="/bookings/new"
-                          render={() => <NewBooking 
+                          render={() => <NewBooking
                             customers={this.state.customers}
                             tables={this.state.tables}
                             />}
