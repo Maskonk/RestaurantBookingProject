@@ -31,7 +31,7 @@ class Main extends Component{
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route path="/customers/new" component={NewCustomer}/>
-                        <Route path="/customers" component={AllCustomers}/>
+                        <Route path="/customers" render={() => <AllCustomers customers={this.state.customers} />} />
                         <Route path="/bookings/new" component={NewBooking}/>
                         <Route path="/bookings" component={AllBooking}/>
                     </Switch>
