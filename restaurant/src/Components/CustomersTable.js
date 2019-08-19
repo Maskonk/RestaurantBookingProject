@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import CustomersTableItem from './CustomersTableItem';
 
 const CustomersTable = (props) => {
-  render() {
     return (
-
+        <Fragment>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Phone Number</th>
+          <th>Number of Visits</th>
+        </tr>
+      </table>
+        </Fragment>
     )
   }
-}
+
 
 export default CustomersTable;
