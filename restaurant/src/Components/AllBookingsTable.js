@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import AllBookingsTableItem from './AllBookingsTableItem';
 
 const AllBookingsTable = (props) => {
   return (
