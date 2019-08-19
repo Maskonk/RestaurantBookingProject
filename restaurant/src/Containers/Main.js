@@ -6,6 +6,7 @@ import AllCustomers from "../Components/AllCustomers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewCustomer from "../Components/NewCustomer";
 import NewBooking from "../Components/NewBooking";
+import EditCustomer from "../Components/EditCustomer"
 
 class Main extends Component{
 
@@ -15,6 +16,16 @@ class Main extends Component{
             bookings: [],
             customers: []
         }
+    }
+
+    findCustomerById(id) {
+        for (let customer in this.state.customers) {
+            if (this.state.customers[customer].id === parseInt(id)) {
+                console.log(this.state.customers[customer]);
+                return this.state.customers[customer];
+            }
+        }
+        return null;
     }
 
     componentDidMount() {
@@ -31,6 +42,11 @@ class Main extends Component{
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route path="/customers/new" component={NewCustomer}/>
+                        <Route path="/customers/edit/:id" render={(props) =>{
+                            const id = props.match.params.id;
+                            const customer = this.findCustomerById(id);
+                            return <EditCustomer customer={customer} />
+                        }}/>
                         <Route path="/customers" render={() => <AllCustomers customers={this.state.customers} />} />
                         <Route path="/bookings/new" component={NewBooking}/>
                         <Route path="/bookings" component={AllBooking}/>
@@ -39,6 +55,5 @@ class Main extends Component{
             </Router>
         );
     }
-
 }
 export default Main;
