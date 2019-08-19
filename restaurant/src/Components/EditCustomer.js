@@ -5,9 +5,17 @@ class EditCustomer extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            editable: false
+            editable: false,
+            name: null,
+            contact: null
         };
         this.handleEdit = this.handleEdit.bind(this);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if ((prevProps !== this.props)&&(this.props.customer !== null)) {
+            this.setState({name: this.props.customer.name, contact: this.props.customer.contact})
+        }
     }
 
 
