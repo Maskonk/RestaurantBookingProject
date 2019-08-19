@@ -16,6 +16,12 @@ class Main extends Component{
             bookings: [],
             customers: []
         }
+        this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this)
+    }
+
+    handleCustomerSubmit(submittedCustomer) {
+      const updatedCustomers = [...this.state.customers, submittedCustomer];
+      this.setState({customers: updatedCustomers})
     }
 
     findCustomerById(id) {
@@ -40,7 +46,8 @@ class Main extends Component{
                     <NavBar/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
-                        <Route path="/customers/new" component={NewCustomer}/>
+                        <Route path="/customers/new" render={() => <NewCustomer onCustomerSubmit={this.handleCustomerSubmit} />} />
+
                         <Route path="/customers/edit/:id" render={(props) =>{
                             const id = props.match.params.id;
                             const customer = this.findCustomerById(id);
