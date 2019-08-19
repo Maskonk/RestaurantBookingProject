@@ -1,6 +1,6 @@
 import React from "react";
 
-const AllCustomers = () => (
+const AllCustomers = (props) => (
  <div>
    <h4>Page for displaying list of all customers</h4>
 
