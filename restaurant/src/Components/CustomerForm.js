@@ -42,7 +42,7 @@ class CustomerForm extends Component {
     return (
       <Fragment>
         <form className="customer-form" onSubmit={this.handleSubmit}>
-          <label for="name-input">Customer Name:</label>
+          <label htmlFor="name-input">Customer Name:</label>
           <input
             type="text"
             placeholder="Customer Name..."
@@ -51,10 +51,11 @@ class CustomerForm extends Component {
             onChange={this.handleNameChange}
           />
           <br/>
-          <label for="tel-number-input">Telephone Number:</label>
+          <label htmlFor="tel-number-input">Telephone Number:</label>
           <input
             type="text"
             placeholder="Telephone Number..."
+            id="tel-number-input"
             value={this.state.contact}
             onChange={this.handleContactChange}
           />
