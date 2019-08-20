@@ -28,7 +28,12 @@ class AllBookings extends Component {
         event.preventDefault();
         const date = event.target.date.value;
         console.log(date);
-        this.props.handleDateFilter(date);
+        if (date !== "") {
+            this.props.handleDateFilter(date);
+        }
+        else {
+            window.location = "/bookings"
+        }
     }
 };
 
