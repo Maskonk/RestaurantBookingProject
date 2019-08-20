@@ -7,7 +7,7 @@ const NewBooking = (props) => (
    <h4>Page allowing to create a new booking</h4>
    <BookingForm customers={props.customers} tables={props.tables}/>
    <center>
-   <img src={plan} width="950" height="550" align="center" border="3"/>
+   <img src={plan} width="950" height="550" align="center" border="3" alt="Floor_plan"/>
    </center>
  </div>
 )
