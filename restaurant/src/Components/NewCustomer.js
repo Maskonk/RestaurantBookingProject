@@ -2,8 +2,8 @@ import React from "react";
 import CustomerForm from './CustomerForm';
 
 const NewCustomer = (props) => (
- <div>
-   <h4>Add Details of New Customer Below</h4>
+ <div style={{ backgroundColor: "lightblue"}}>
+   <h1 style={{paddingTop:10, textAlign:"center"}}>Add a New Customer to our database:</h1>
    <CustomerForm onCustomerSubmit={props.onCustomerSubmit}/>
  </div>
 );

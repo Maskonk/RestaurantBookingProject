@@ -15,7 +15,8 @@ class Main extends Component{
         super(props);
         this.state = {
             bookings: [],
-            customers: []
+            customers: [],
+            tables: null
         };
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
         this.handleCustomerUpdate = this.handleCustomerUpdate.bind(this);
@@ -68,8 +69,10 @@ class Main extends Component{
 
     componentDidMount() {
         let url = "http://localhost:8080/";
-        fetch(url + "bookings").then(res => res.json()).then(data => this.setState({bookings: data})).catch(err => console.error())
+        fetch(url + "bookings/date-sorted").then(res => res.json()).then(data => this.setState({bookings: data})).catch(err => console.error())
         fetch(url + "customers/by-visits-desc").then(res => res.json()).then(data => this.setState({customers: data})).catch(err => console.error())
+        fetch(url + "tables").then(res => res.json()).then(data =>
+        this.setState({tables: data})).catch(err => console.error())
     }
 
     render() {
@@ -86,8 +89,12 @@ class Main extends Component{
                             return <EditCustomer customer={customer} handleCustomerUpdate={this.handleCustomerUpdate}/>
                         }}/>
                         <Route path="/customers" render={() => <AllCustomers customers={this.state.customers} />} />
-
-                        <Route path="/bookings/new" component={NewBooking}/>
+                        <Route path="/bookings/new"
+                          render={() => <NewBooking
+                            customers={this.state.customers}
+                            tables={this.state.tables}
+                            />}
+                        />
                         <Route path="/bookings/edit/:id" render={(props) => {
                           const id = props.match.params.id;
                           const booking = this.findBookingsById(id);
