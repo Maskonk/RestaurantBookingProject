@@ -18,6 +18,28 @@ class BookingForm extends Component {
     this.handleCommentsChange = this.handleCommentsChange.bind(this)
     this.handleCustomerChange = this.handleCustomerChange.bind(this)
     this.handleTableChange = this.handleTableChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    // TODO: input validation
+    fetch("http://localhost:8080/bookings", {
+        method: 'POST',
+        body: JSON.stringify(this.state),
+        headers: { 'Content-Type': 'application/json'}
+      })
+      .then(() => {
+        window.location = '/bookings'
+      })
+    this.setState({
+      time: "",
+      date: "",
+      partySize: "",
+      comments: "",
+      customer:"",
+      table: ""
+    })
   }
 
   handleTimeChange(event) {
@@ -63,7 +85,7 @@ class BookingForm extends Component {
 
       return(
         <Fragment>
-          <form className="booking-form">
+          <form className="booking-form" onSubmit={this.handleSubmit}>
             <label htmlFor="booking-time">Booking Time: </label>
             <input
               type="time"
@@ -130,16 +152,6 @@ class BookingForm extends Component {
       )
     }
   }
-
 }
-
-
-// <label htmlFor="table-selector">Table: </label>
-// <select id="table-selector" defaultValue="defaultValue">
-//   <option disabled value="default">Choose a Table...</option>
-//   {tableOptions}
-// </select>
-//
-// <br/>
 
 export default BookingForm;
