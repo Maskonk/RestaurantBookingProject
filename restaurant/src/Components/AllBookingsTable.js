@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import {Link} from "react-router-dom";
 
 const AllBookingsTable = ({bookings}) => {
-
+    console.log(bookings);
     const bookingTable = bookings.map(booking => {
       return <tr>
         <td>{booking.customer.name}</td>

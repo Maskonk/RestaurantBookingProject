@@ -20,11 +20,12 @@ class Main extends Component{
         };
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
         this.handleCustomerUpdate = this.handleCustomerUpdate.bind(this);
+        this.handleDateFilter = this.handleDateFilter.bind(this);
     }
 
     handleCustomerSubmit(submittedCustomer) {
-      const updatedCustomers = [...this.state.customers, submittedCustomer];
-      this.setState({customers: updatedCustomers})
+        const updatedCustomers = [...this.state.customers, submittedCustomer];
+        this.setState({customers: updatedCustomers})
     }
 
     handleCustomerUpdate(customer) {
@@ -33,9 +34,13 @@ class Main extends Component{
             method: "PATCH",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(customer)
-            }).then(() => {
+        }).then(() => {
             window.location = '/customers/edit/' + customer.id
         })
+    }
+
+    handleDateFilter(date) {
+        fetch('http://localhost:8080/bookings/date/' + date).then(res => res.json()).then(data => this.setState({bookings: data}))
     }
 
 
@@ -51,17 +56,17 @@ class Main extends Component{
     findBookingsById(id) {
         for (let booking of this.state.bookings) {
             if (booking.id === parseInt(id)) {
-              return booking;
+                return booking;
             }
         }
     }
 
     componentDidMount() {
         let url = "http://localhost:8080/";
-        fetch(url + "bookings/date-sorted").then(res => res.json()).then(data => this.setState({bookings: data})).catch(err => console.error())
-        fetch(url + "customers/by-visits-desc").then(res => res.json()).then(data => this.setState({customers: data})).catch(err => console.error())
+        fetch(url + "bookings/date-sorted").then(res => res.json()).then(data => this.setState({bookings: data})).catch(err => console.error());
+        fetch(url + "customers/by-visits-desc").then(res => res.json()).then(data => this.setState({customers: data})).catch(err => console.error());
         fetch(url + "tables").then(res => res.json()).then(data =>
-        this.setState({tables: data})).catch(err => console.error())
+            this.setState({tables: data})).catch(err => console.error())
     }
 
     render() {
@@ -79,17 +84,17 @@ class Main extends Component{
                         }}/>
                         <Route path="/customers" render={() => <AllCustomers customers={this.state.customers} />} />
                         <Route path="/bookings/new"
-                          render={() => <NewBooking
-                            customers={this.state.customers}
-                            tables={this.state.tables}
-                            />}
+                               render={() => <NewBooking
+                                   customers={this.state.customers}
+                                   tables={this.state.tables}
+                               />}
                         />
                         <Route path="/bookings/edit/:id" render={(props) => {
-                          const id = props.match.params.id;
-                          const booking = this.findBookingsById(id);
-                          return <EditBooking booking={booking} />
+                            const id = props.match.params.id;
+                            const booking = this.findBookingsById(id);
+                            return <EditBooking booking={booking} />
                         }}/>
-                        <Route path="/bookings" render={() => <AllBookings bookings={this.state.bookings} />} />
+                        <Route path="/bookings" render={() => <AllBookings bookings={this.state.bookings} handleDateFilter={this.handleDateFilter} />} />
                     </Switch>
                 </Fragment>
             </Router>
