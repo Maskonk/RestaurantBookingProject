@@ -10,11 +10,12 @@ class EditCustomer extends Component{
             contact: null
         };
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if ((prevProps !== this.props)&&(this.props.customer !== null)) {
+        if ((prevProps !== this.props)&&(this.props.customer)) {
             this.setState({name: this.props.customer.name, contact: this.props.customer.contact})
         }
     }
@@ -39,6 +40,7 @@ class EditCustomer extends Component{
                         <td>{this.props.customer.contact}</td>
                         <td>{this.props.customer.noOfVisits}</td>
                         <td><button onClick={this.handleEdit}>Edit</button></td>
+                        <td><button onClick={this.handleDelete}>Delete</button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -71,6 +73,10 @@ class EditCustomer extends Component{
 
     handleEdit() {
         this.setState({editable: !this.state.editable})
+    }
+
+    handleDelete() {
+        fetch('http://localhost:8080/customers/' + this.props.customer.id, {method: "DELETE"}).then(() => window.location = "/customers")
     }
 };
 

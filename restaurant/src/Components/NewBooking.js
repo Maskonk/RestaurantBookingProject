@@ -13,7 +13,7 @@ const NewBooking = (props) => (
 
 
    <center style={{marginLeft:450, marginTop:50, marginBottom:100 }}>
-   <img src={plan} width="750" height="450" border="3"/>
+   <img src={plan} width="750" height="450" border="3" alt="Floor_plan"/>
    </center>
 
 
