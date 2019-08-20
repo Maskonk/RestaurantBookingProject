@@ -14,6 +14,7 @@ class EditBooking extends Component {
         comments: null
       };
       this.handleEdit = this.handleEdit.bind(this);
+      this.handleDelete = this.handleDelete.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -55,6 +56,7 @@ class EditBooking extends Component {
               <td>{this.props.booking.partySize}</td>
               <td>{this.props.booking.comments}</td>
               <td><button onClick={this.handleEdit}>Edit</button></td>
+              <td><button onClick={this.handleDelete}>Delete</button></td>
             </tr>
           </tbody>
         </table>
@@ -104,6 +106,10 @@ class EditBooking extends Component {
 
   handleEdit() {
       this.setState({editable: !this.state.editable})
+  }
+
+  handleDelete() {
+    fetch('http://localhost:8080/bookings/' + this.props.booking.id, {method: "DELETE"}).then(() => window.location = "/bookings")
   }
 }
 
