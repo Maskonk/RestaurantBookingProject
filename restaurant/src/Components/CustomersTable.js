@@ -6,7 +6,7 @@ const CustomersTable = ({customers}) => {
   {return <tr>
     <td>{customer.name}</td>
     <td>{customer.contact}</td>
-    <td>{customer.noOfVisits}</td>
+    <td>{customer.bookings.length}</td>
     <td><Link to={"/customers/edit/" + customer.id}><button>Show details</button></Link></td>
   </tr>});
   return (
