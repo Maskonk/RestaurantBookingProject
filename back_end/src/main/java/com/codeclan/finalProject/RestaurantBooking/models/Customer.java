@@ -21,15 +21,12 @@ public class Customer {
     @Column(name = "contact")
     private String contact;
 
-
-
     @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
     private List<Booking> bookings;
 
     public Customer(String name, String contact) {
         this.name = name;
         this.contact = contact;
-
         this.bookings = new ArrayList<Booking>();
     }
 
@@ -59,8 +56,7 @@ public class Customer {
     public void setContact(String contact) {
         this.contact = contact;
     }
-
-
+    
     public List<Booking> getBookings() {
         return bookings;
     }
