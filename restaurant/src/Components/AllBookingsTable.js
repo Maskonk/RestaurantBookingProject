@@ -1,17 +1,9 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import {Link} from "react-router-dom";
 
-class AllBookingsTable extends Component{
+const AllBookingsTable = ({bookings}) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      dateFilter: ""
-    }
-  }
-
-  render() {
-    const bookingTable = this.props.bookings.map(booking => {
+    const bookingTable = bookings.map(booking => {
       return <tr>
         <td>{booking.customer.name}</td>
         <td>{booking.table.id}</td>
@@ -27,10 +19,6 @@ class AllBookingsTable extends Component{
 
     return (
         <Fragment>
-          <label htmlFor="dateFilter"> Filter by date: </label>
-          <input type="text" className="dateFilter" placeholder="yyyy-mm-dd"/>
-          <br/>
-          <br/>
           <table>
             <tbody>
             <tr>
@@ -46,7 +34,6 @@ class AllBookingsTable extends Component{
           </table>
         </Fragment>
     )
-  }
 };
 
 
