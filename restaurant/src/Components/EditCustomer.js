@@ -60,11 +60,13 @@ class EditCustomer extends Component{
     handleSubmit(event) {
         event.preventDefault();
         this.handleEdit();
-        const customer = {
+        const customerSend = {
+            id: this.props.customer.id,
             name: event.target.name.value,
             contact: event.target.contact.value,
             noOfVisits: this.props.customer.noOfVisits
-        }
+        };
+        this.props.handleCustomerUpdate(customerSend)
     }
 
     handleEdit() {
