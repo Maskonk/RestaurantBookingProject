@@ -3,18 +3,15 @@ import plan from '../Pictures/Tables_plan_ready.jpg';
 
 
 const NewBooking = () => (
- <div>
-   <h4>Page allowing to create a new booking</h4>
+
+ <div style={{ backgroundColor: "lightblue"}}>
+
+   <h1 style={{paddingTop:10, textAlign:"center"}}>Page allowing to create a new booking</h1>
 
    <center>
-   <img src={plan} width="950" height="550" align="center" border="3"/>
+   <img src={plan} width="950" height="550" border="2"/>
    </center>
-
-   <h4>Page allowing to create a new booking</h4>
-
-
  </div>
 )
-
 
 export default NewBooking;

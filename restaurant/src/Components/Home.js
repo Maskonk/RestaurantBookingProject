@@ -10,14 +10,19 @@ class Home extends Component {
 
     render() {
         return (
+
+
           <div style={{ backgroundColor: "lightblue"}}>
             <Fragment>
-                <p> Welcome to Kyle Butchers shop </p>
-                <h1> Welcome to Kyle Butchers shop </h1>
-                <center>
-                <img src={restaurant} width="950" height="550" align="center" border="3"/>
-                </center>
+            <h1 style={{paddingTop:10, textAlign:"center"}}> Welcome to Kyle Butcher's shop. </h1>
+                <p style={{margin: 20, position:"absolute", width: 350}}> By using our online restaurant table booking system you can
+                now build your own client database. So you can email your clients
+                with some great promos to drive more business and boost sales
+                whenever you want. </p>
 
+                <center style={{marginLeft:300, marginTop:50, marginBottom:50 }}>
+                <img src={restaurant} width="850" height="450" border="3"/>
+                </center>
             </Fragment>
           </div>
         )

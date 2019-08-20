@@ -1,8 +1,10 @@
 import React from "react";
 
 const ShowBookings = () => (
- <div>
-   <h4>Page for displaying list of all customers</h4>
+
+ <div style={{backgroundColor: "lightblue" }}>
+
+   <h1>Page for displaying list of all customers</h1>
 
  </div>
 );
