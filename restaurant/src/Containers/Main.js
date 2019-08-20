@@ -17,14 +17,27 @@ class Main extends Component{
             bookings: [],
             customers: [],
             tables: null
-        }
-        this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this)
+        };
+        this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
+        this.handleCustomerUpdate = this.handleCustomerUpdate.bind(this);
     }
 
     handleCustomerSubmit(submittedCustomer) {
       const updatedCustomers = [...this.state.customers, submittedCustomer];
       this.setState({customers: updatedCustomers})
     }
+
+    handleCustomerUpdate(customer) {
+        console.log("Customer:", customer);
+        fetch('http://localhost:8080/customers/' + customer.id, {
+            method: "PATCH",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(customer)
+            }).then(() => {
+            window.location = '/customers/edit/' + customer.id
+        })
+    }
+
 
     findCustomerById(id) {
         for (let customer of this.state.customers) {
@@ -59,11 +72,10 @@ class Main extends Component{
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route path="/customers/new" render={() => <NewCustomer onCustomerSubmit={this.handleCustomerSubmit} />} />
-
                         <Route path="/customers/edit/:id" render={(props) =>{
                             const id = props.match.params.id;
                             const customer = this.findCustomerById(id);
-                            return <EditCustomer customer={customer} />
+                            return <EditCustomer customer={customer} handleCustomerUpdate={this.handleCustomerUpdate}/>
                         }}/>
                         <Route path="/customers" render={() => <AllCustomers customers={this.state.customers} />} />
                         <Route path="/bookings/new"
