@@ -2,8 +2,8 @@ import React, {Fragment} from 'react';
 import {Link} from "react-router-dom";
 
 const CustomersTable = ({customers}) => {
-  const customerTable = customers.map(customer =>
-  {return <tr>
+  const customerTable = customers.map((customer, index) =>
+  {return <tr key={index}>
     <td>{customer.name}</td>
     <td>{customer.contact}</td>
     <td>{customer.noOfVisits}</td>
