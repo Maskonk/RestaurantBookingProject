@@ -21,6 +21,7 @@ class Main extends Component{
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
         this.handleCustomerUpdate = this.handleCustomerUpdate.bind(this);
         this.handleDateFilter = this.handleDateFilter.bind(this);
+        this.handleBookingUpdate = this.handleBookingUpdate.bind(this);
     }
 
     handleCustomerSubmit(submittedCustomer) {
@@ -52,6 +53,17 @@ class Main extends Component{
         }
         return null;
     }
+
+    handleBookingUpdate(booking) {
+      console.log("Booking:", booking);
+      fetch('http://localhost:8080/bookings/' + booking.id, {
+        method: "PATCH",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(booking)
+        }).then(() => {
+        window.location = '/bookings/edit/' + booking.id
+        })
+}
 
     findBookingsById(id) {
         for (let booking of this.state.bookings) {
@@ -90,9 +102,9 @@ class Main extends Component{
                                />}
                         />
                         <Route path="/bookings/edit/:id" render={(props) => {
-                            const id = props.match.params.id;
-                            const booking = this.findBookingsById(id);
-                            return <EditBooking booking={booking} />
+                          const id = props.match.params.id;
+                          const booking = this.findBookingsById(id);
+                          return <EditBooking booking={booking} handleBookingUpdate={this.handleBookingUpdate}/>
                         }}/>
                         <Route path="/bookings" render={() => <AllBookings bookings={this.state.bookings} handleDateFilter={this.handleDateFilter} />} />
                     </Switch>
