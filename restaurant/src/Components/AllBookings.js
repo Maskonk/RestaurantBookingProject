@@ -4,24 +4,31 @@ import AllBookingsTable from "./AllBookingsTable";
 class AllBookings extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
+        this.handleDateFilterSubmit = this.handleDateFilterSubmit.bind(this);
     }
 
-
     render() {
+
         return (
             <div style={{backgroundColor: "lightblue"}}>
                 <h1 style={{paddingTop: 10, textAlign: "center"}}>Display bookings</h1>
-                <form>
+                <form onSubmit={this.handleDateFilterSubmit}>
                 <label htmlFor="dateFilter"> Filter by date: </label>
-                <input type="text" className="dateFilter" placeholder="yyyy-mm-dd"/>
+                <input type="date" className="dateFilter" placeholder="yyyy-mm-dd" name="date"/>
                 <input type="submit" value="Filter"/>
                 </form>
-                <br/>
                 <br/>
                 <AllBookingsTable bookings={this.props.bookings}/>
             </div>
         )
+    }
+
+    handleDateFilterSubmit(event) {
+        event.preventDefault();
+        const date = event.target.date.value;
+        console.log(date);
+        this.props.handleDateFilter(date);
     }
 };
 
