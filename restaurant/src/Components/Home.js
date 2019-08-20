@@ -21,7 +21,7 @@ class Home extends Component {
                 whenever you want. </p>
 
                 <center style={{marginLeft:300, marginTop:50, marginBottom:50 }}>
-                <img src={restaurant} width="850" height="450" border="3"/>
+                <img src={restaurant} width="850" height="450" border="3" alt="dining_room"/>
                 </center>
             </Fragment>
           </div>

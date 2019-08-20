@@ -2,9 +2,8 @@ import React, {Fragment} from 'react';
 import {Link} from "react-router-dom";
 
 const AllBookingsTable = ({bookings}) => {
-    console.log(bookings);
-    const bookingTable = bookings.map(booking => {
-      return <tr>
+    const bookingTable = bookings.map((booking, index) => {
+      return <tr key={index}>
         <td>{booking.customer.name}</td>
         <td>{booking.table.id}</td>
         <td>{booking.date}</td>
