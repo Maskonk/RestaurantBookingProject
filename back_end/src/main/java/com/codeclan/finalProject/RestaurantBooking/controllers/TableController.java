@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tables")
-public class TablesController {
+public class TableController {
 
     @Autowired
     TableRepository tableRepository;
