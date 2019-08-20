@@ -18,7 +18,7 @@ class EditBooking extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-      if ((prevProps !== this.props) && (this.props.booking !== null)) {
+      if ((prevProps !== this.props) && (this.props.booking)) {
         this.setState({
           name: this.props.booking.customer.name,
           number: this.props.booking.table.id,
