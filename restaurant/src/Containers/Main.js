@@ -58,7 +58,7 @@ class Main extends Component{
 
     componentDidMount() {
         let url = "http://localhost:8080/";
-        fetch(url + "bookings/date-sorted").then(res => res.json()).then(data => this.setState({bookings: data})).catch(err => console.error())
+        fetch(url + "bookings/").then(res => res.json()).then(data => this.setState({bookings: data})).catch(err => console.error())
         fetch(url + "customers/by-visits-desc").then(res => res.json()).then(data => this.setState({customers: data})).catch(err => console.error())
         fetch(url + "tables").then(res => res.json()).then(data =>
         this.setState({tables: data})).catch(err => console.error())
