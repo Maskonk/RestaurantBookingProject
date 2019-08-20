@@ -14,7 +14,7 @@ class EditCustomer extends Component{
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if ((prevProps !== this.props)&&(this.props.customer !== null)) {
+        if ((prevProps !== this.props)&&(this.props.customer)) {
             this.setState({name: this.props.customer.name, contact: this.props.customer.contact})
         }
     }
