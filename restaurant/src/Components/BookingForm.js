@@ -54,16 +54,16 @@ class BookingForm extends Component {
     this.setState({partySize: event.target.value})
   }
 
-  handleCommentsChange(event) {
-    this.setState({comments: event.target.value})
-  }
-
   handleCustomerChange(event) {
     this.setState({customer: event.target.value})
   }
 
   handleTableChange(event) {
     this.setState({table: event.target.value})
+  }
+
+  handleCommentsChange(event) {
+    this.setState({comments: event.target.value})
   }
 
   render() {
@@ -86,6 +86,14 @@ class BookingForm extends Component {
       return(
         <Fragment>
           <form className="booking-form" onSubmit={this.handleSubmit}>
+
+          <label htmlFor="customer-selector">Customer: </label>
+          <select id="customer-selector"
+          value={this.state.customer} onChange={this.handleCustomerChange}>
+            <option value="">Choose a Customer...</option>
+            {customerOptions}
+          </select>
+          <br/>
             <label htmlFor="booking-time">Booking Time: </label>
             <input
               type="time"
@@ -110,24 +118,6 @@ class BookingForm extends Component {
               value={this.state.partySize}
               onChange={this.handlePartySizeChange}
             />
-            <br/>
-
-            <label htmlFor="booking-comments">Booking Comments: </label>
-            <input
-              type="text"
-              id="booking-comments"
-              placeholder="Enter comments here..."
-              value={this.state.comments}
-              onChange={this.handleCommentsChange}
-            />
-            <br/>
-
-            <label htmlFor="customer-selector">Customer: </label>
-            <select id="customer-selector"
-            value={this.state.customer} onChange={this.handleCustomerChange}>
-              <option value="">Choose a Customer...</option>
-              {customerOptions}
-            </select>
 
             <br/>
 
@@ -139,6 +129,15 @@ class BookingForm extends Component {
             </select>
 
             <br/>
+
+            <label htmlFor="booking-comments">Booking Comments: </label>
+            <input
+              type="text"
+              id="booking-comments"
+              placeholder="Enter comments here..."
+              value={this.state.comments}
+              onChange={this.handleCommentsChange}
+            />
 
 
             <input type="submit" value="Make booking"/>
