@@ -18,7 +18,9 @@ public class CustomerController {
 
     @GetMapping(value = "/by-visits-desc")
     public List<Customer> customersByVisits() {
-        return customerRepository.findByOrderByNoOfVisitsDesc();
+        return customerRepository.findByOrderById();
     }
+
+
 
 }
