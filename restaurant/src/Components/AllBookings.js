@@ -3,7 +3,7 @@ import AllBookingsTable from "./AllBookingsTable";
 
 const AllBookings = ({bookings}) => (
  <div>
-   <h4>Display all Booking</h4>
+   <h4>Display Bookings</h4>
    <AllBookingsTable bookings={bookings}/>
  </div>
 );
