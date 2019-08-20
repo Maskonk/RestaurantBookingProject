@@ -16,9 +16,11 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
-    @GetMapping(value = "/by-visits-desc")
+    @GetMapping(value = "/by-id")
     public List<Customer> customersByVisits() {
-        return customerRepository.findByOrderByNoOfVisitsDesc();
+        return customerRepository.findByOrderById();
     }
+
+
 
 }

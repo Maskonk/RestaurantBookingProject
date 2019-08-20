@@ -1,16 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import "../styles/HomePage.css";
+import "../styles/table.css";
 import restaurant from '../Pictures/restaurant_for_homepage.jpg';
-
-
-
 
 
 class Home extends Component {
 
     render() {
         return (
-
 
           <div style={{ backgroundColor: "lightblue"}}>
             <Fragment>

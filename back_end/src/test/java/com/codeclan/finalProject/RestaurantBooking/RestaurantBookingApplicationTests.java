@@ -43,11 +43,8 @@ public class RestaurantBookingApplicationTests {
 		assertEquals("07999999999", customer.getContact());
 	}
 
-	@Test
-	public void customerHasNoVisitsInitially() {
-		Customer customer = new Customer("Bob", "07999999999");
-		assertEquals(0, customer.getNoOfVisits());
-	}
+
+
 
 	@Test
 	public void customerCanBeSaved() {
