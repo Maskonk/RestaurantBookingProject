@@ -136,6 +136,10 @@ class BookingForm extends Component {
           }
           <br/>
 
+          {(this.state.tables != null && this.state.tables.length === 0) &&
+            <p>No Availability</p>
+          }
+
           {(this.state.tables != null && this.state.tables.length > 0) &&
 
             <div>
