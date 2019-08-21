@@ -10,7 +10,8 @@ class BookingForm extends Component {
       partySize: "",
       comments: "",
       customer:"",
-      table: ""
+      table: "",
+      testTables: null
     }
     this.handlePartySizeChange = this.handlePartySizeChange.bind(this)
     this.handleTimeChange = this.handleTimeChange.bind(this)
@@ -19,6 +20,7 @@ class BookingForm extends Component {
     this.handleCustomerChange = this.handleCustomerChange.bind(this)
     this.handleTableChange = this.handleTableChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleAvailClick = this.handleAvailClick.bind(this)
   }
 
   handleSubmit(event){
@@ -64,6 +66,16 @@ class BookingForm extends Component {
 
   handleCommentsChange(event) {
     this.setState({comments: event.target.value})
+  }
+
+  handleAvailClick(event){
+    console.log("I was clicked");
+    let url = "http://localhost:8080/";
+    fetch(url + "tables/bigenough/" + (this.state.partySize -1))
+      .then(res => res.json())
+      .then(data =>
+        this.setState({testTables: data}))
+      .catch(err => console.error())
   }
 
   render() {
@@ -119,6 +131,8 @@ class BookingForm extends Component {
               onChange={this.handlePartySizeChange}
             />
 
+            <input type="button" onClick={this.handleAvailClick} value="Check Availability!"/>
+
             <br/>
 
             <label htmlFor="table-selector">Table: </label>
@@ -139,8 +153,14 @@ class BookingForm extends Component {
               onChange={this.handleCommentsChange}
             />
 
+            {this.state.testTables != null &&
+              <input type="submit" value="Make booking"/>
 
-            <input type="submit" value="Make booking"/>
+
+            }
+
+
+
           </form>
 
         </Fragment>
