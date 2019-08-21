@@ -13,13 +13,19 @@ class AllBookings extends Component {
         return (
             <div style={{backgroundColor: "lightblue"}}>
                 <h1 style={{paddingTop: 10, textAlign: "center"}}>Display bookings</h1>
-                <form onSubmit={this.handleDateFilterSubmit}>
-                <label htmlFor="dateFilter"> Filter by date: </label>
-                <input type="date" className="dateFilter" placeholder="yyyy-mm-dd" name="date"/>
-                <input type="submit" value="Filter"/>
-                </form>
+                <center>
+                  <div style={{display:"inline-block", marginTop: 30, width: 350, backgroundColor: "white", border: '3px solid black'}}>
+                    <form onSubmit={this.handleDateFilterSubmit}>
+                      <label htmlFor="dateFilter"> Filter by date: </label>
+                      <input type="date" className="dateFilter" placeholder="yyyy-mm-dd" name="date"/>
+                      <input type="submit" value="Filter"/>
+                    </form>
+                  </div>
+                </center>
                 <br/>
+                <center>
                 <AllBookingsTable bookings={this.props.bookings}/>
+                </center>
             </div>
         )
     }

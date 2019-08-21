@@ -28,6 +28,8 @@ class EditCustomer extends Component{
 
         return (
             <Fragment>
+            <h1 style={{paddingTop:10, textAlign:"center"}}> Edit or Delete Customer details </h1>
+              <center>
                 <table>
                     <tbody>
                     <tr>
@@ -39,22 +41,27 @@ class EditCustomer extends Component{
                         <td>{this.props.customer.name}</td>
                         <td>{this.props.customer.contact}</td>
                         <td>{this.props.customer.noOfVisits}</td>
-                        <td><button onClick={this.handleEdit}>Edit</button></td>
-                        <td><button onClick={this.handleDelete}>Delete</button></td>
+                        <td><button onClick={this.handleEdit} style= {{backgroundColor:"#4CAF50", color:"white"}}>Edit</button></td>
+                        <td><button onClick={this.handleDelete} style= {{backgroundColor:"#4CAF50", color:"white"}}>Delete</button></td>
                     </tr>
                     </tbody>
                 </table>
                 { this.state.editable ?
                     <div> <br />
-                        <h4> Edit customer </h4>
                     <form onSubmit={this.handleSubmit}>
+                      <div style={{marginTop: 30, width: 350, backgroundColor: "white", border: '3px solid black'}}>
+                        <h4> Edit customer </h4>
                         <label htmlFor="name"> Name: </label>
                         <input type="text" defaultValue={this.props.customer.name} name="name" /> <br />
                         <label htmlFor="contact"> Phone number: </label>
                         <input type="text" defaultValue={this.props.customer.contact} name="contact"/> <br/>
                         <input type="submit" value="Save"/>
-                    </form> </div> : null
+                        </div>
+                    </form>
+                    </div> : null
+
                 }
+                </center>
             </Fragment>
         )
     }

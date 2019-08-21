@@ -38,6 +38,8 @@ class EditBooking extends Component {
     }
     return (
       <Fragment>
+      <h1 style={{paddingTop:10, textAlign:"center"}}> Edit or Delete Booking details </h1>
+      <center>
         <table>
           <tbody>
             <tr>
@@ -55,14 +57,14 @@ class EditBooking extends Component {
               <td>{this.props.booking.time}</td>
               <td>{this.props.booking.partySize}</td>
               <td>{this.props.booking.comments}</td>
-              <td><button onClick={this.handleEdit}>Edit</button></td>
-              <td><button onClick={this.handleDelete}>Delete</button></td>
+              <td><button onClick={this.handleEdit} style= {{backgroundColor:"#4CAF50", color:"white"}}>Edit</button></td>
+              <td><button onClick={this.handleDelete} style= {{backgroundColor:"#4CAF50", color:"white"}}>Delete</button></td>
             </tr>
           </tbody>
         </table>
 
         { this.state.editable ?
-        <div> <br />
+        <div style={{marginTop: 30, width: 350, backgroundColor: "white", border: '3px solid black'}}> <br />
             <h4> Edit Booking </h4>
         <form onSubmit={this.handleSubmit}>
 
@@ -85,6 +87,7 @@ class EditBooking extends Component {
         </form>
         </div> : null
     }
+    </center>
 
       </Fragment>
     )

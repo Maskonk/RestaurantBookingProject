@@ -11,7 +11,7 @@ const AllBookingsTable = ({bookings}) => {
         <td>{booking.partySize}</td>
         <td>{booking.comments}</td>
         <td><Link to={"/bookings/edit/" + booking.id}>
-          <button>Show details</button>
+          <button style= {{backgroundColor:"#4CAF50", color:"white"}}>Show details</button>
         </Link></td>
       </tr>
     });

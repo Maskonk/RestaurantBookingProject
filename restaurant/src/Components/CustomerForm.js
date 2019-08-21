@@ -22,9 +22,11 @@ class CustomerForm extends Component {
       })
       .then(res => res.json())
       .then(customer => {
-        console.log(customer)
-        this.props.onCustomerSubmit(customer)
-      })
+        console.log(customer);
+        window.location = "/customers"
+        // this.props.onCustomerSubmit(customer)
+
+      });
 
 
     this.setState({name: '', contact:''})
