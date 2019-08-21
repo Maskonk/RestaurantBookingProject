@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface TableRepository extends JpaRepository<Table, Long> {
 
-    List<Table> findByCapacityGreaterThan(int capacity);
+    List<Table> findByCapacityGreaterThanOrderByCapacity(int capacity);
 }
