@@ -19,7 +19,7 @@ public class TableController {
 
     @GetMapping(value = "/bigenough/{size}")
     public List<Table> findByCapacityGreaterThan(@PathVariable int size) {
-        return tableRepository.findByCapacityGreaterThan(size);
+        return tableRepository.findByCapacityGreaterThanOrderByCapacity(size);
     }
 
 
