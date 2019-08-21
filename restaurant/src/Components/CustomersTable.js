@@ -7,7 +7,7 @@ const CustomersTable = ({customers}) => {
     <td>{customer.name}</td>
     <td>{customer.contact}</td>
     <td>{customer.bookings.length}</td>
-    <td><Link to={"/customers/edit/" + customer.id}><button>Show details</button></Link></td>
+    <td><Link to={"/customers/edit/" + customer.id}><button style= {{backgroundColor:"#4CAF50", color:"white"}}>Show details</button></Link></td>
   </tr>});
   return (
       <Fragment>
