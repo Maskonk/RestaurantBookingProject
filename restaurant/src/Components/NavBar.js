@@ -19,6 +19,9 @@ const NavBar = () => (
     <li>
       <Link to="/bookings"> All Bookings</Link>
     </li>
+      <li>
+          <Link to="/combined-bookings"> Combined Bookings </Link>
+      </li>
   </ul>
 );
 
