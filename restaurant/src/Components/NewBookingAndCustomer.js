@@ -4,7 +4,7 @@ import NewForm from "./NewForm";
 const NewBookingAndCustomer = (props) => (
     <Fragment>
         <h2>New Booking</h2>
-        <NewForm customers={props.customers} />
+        <NewForm customers={props.customers} tables={props.tables} />
     </Fragment>
 );
 
