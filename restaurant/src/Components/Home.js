@@ -11,7 +11,7 @@ class Home extends Component {
 
           <div style={{ backgroundColor: "lightblue"}}>
             <Fragment>
-            <h1 style={{paddingTop:10, textAlign:"center"}}> Welcome to Kyle's Butcher's shop. </h1>
+            <h1 style={{paddingTop:10, textAlign:"center"}}> Welcome to Kyle's Butcher shop. </h1>
                 <p style={{margin: 20, position:"absolute", width: 350}}> By using our online restaurant table booking system you can
                 now build your own client database. So you can email your clients
                 with some great promos to drive more business and boost sales
