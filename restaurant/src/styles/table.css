@@ -19,3 +19,7 @@ th, td {
   text-align: center;
   padding: 8px;
 }
+
+td {
+    background: white;
+}
