@@ -108,7 +108,8 @@ class Main extends Component{
                           return <EditBooking booking={booking} handleBookingUpdate={this.handleBookingUpdate}/>
                         }}/>
                         <Route path="/bookings" render={() => <AllBookings bookings={this.state.bookings} handleDateFilter={this.handleDateFilter} />} />
-                        <Route path="/test" render={() => <NewBookingAndCustomer customers={this.state.customers}/>} />
+                        <Route path="/test" render={() => <NewBookingAndCustomer customers={this.state.customers}
+                                                                                 tables={this.state.tables} />} />
                     </Switch>
                 </Fragment>
             </Router>

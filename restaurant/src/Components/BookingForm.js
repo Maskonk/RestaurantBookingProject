@@ -11,14 +11,14 @@ class BookingForm extends Component {
       comments: "",
       customer:"",
       table: ""
-    }
-    this.handlePartySizeChange = this.handlePartySizeChange.bind(this)
-    this.handleTimeChange = this.handleTimeChange.bind(this)
-    this.handleDateChange = this.handleDateChange.bind(this)
-    this.handleCommentsChange = this.handleCommentsChange.bind(this)
-    this.handleCustomerChange = this.handleCustomerChange.bind(this)
-    this.handleTableChange = this.handleTableChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.handlePartySizeChange = this.handlePartySizeChange.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleCommentsChange = this.handleCommentsChange.bind(this);
+    this.handleCustomerChange = this.handleCustomerChange.bind(this);
+    this.handleTableChange = this.handleTableChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event){
@@ -31,7 +31,7 @@ class BookingForm extends Component {
       })
       .then(() => {
         window.location = '/bookings'
-      })
+      });
     this.setState({
       time: "",
       date: "",
@@ -72,15 +72,15 @@ class BookingForm extends Component {
       value={"http://localhost:8080/customers/" + customer.id}
       key={index}
       >{customer.name} ({customer.contact})</option>
-    })
+    });
 
-    if (this.props.tables != null) {
+    if (this.props.tables !== null) {
       const tableOptions = this.props.tables._embedded.tables.map((table, index) => {
       return <option
         value={"http://localhost:8080/tables/" + table.id}
         key={index}
         >Table: {table.id}, Capacity: {table.capacity}</option>
-      })
+      });
 
 
       return(
