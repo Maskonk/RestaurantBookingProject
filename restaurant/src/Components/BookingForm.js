@@ -21,14 +21,30 @@ class BookingForm extends Component {
     this.handleTableChange = this.handleTableChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleAvailClick = this.handleAvailClick.bind(this)
+    this.buildPayLoad = this.buildPayLoad.bind(this)
+  }
+
+  buildPayLoad(){
+    return (
+      {
+        time: this.state.time,
+        date: this.state.date,
+        partySize: this.state.partySize,
+        comments: this.state.comments,
+        customer: this.state.customer,
+        table: "http://localhost:8080/tables/" + this.state.testTables[0].id
+      }
+    )
   }
 
   handleSubmit(event){
     event.preventDefault();
     // TODO: input validation
+    // console.log("payload test:", this.buildPayLoad());
+
     fetch("http://localhost:8080/bookings", {
         method: 'POST',
-        body: JSON.stringify(this.state),
+        body: JSON.stringify(this.buildPayLoad()),
         headers: { 'Content-Type': 'application/json'}
       })
       .then(() => {
@@ -131,35 +147,26 @@ class BookingForm extends Component {
               onChange={this.handlePartySizeChange}
             />
 
+            {this.state.partySize &&
             <input type="button" onClick={this.handleAvailClick} value="Check Availability!"/>
-
-            <br/>
-
-            <label htmlFor="table-selector">Table: </label>
-            <select id="table-selector"
-            value={this.state.table} onChange={this.handleTableChange}>
-              <option value="">Choose a Table...</option>
-              {tableOptions}
-            </select>
-
-            <br/>
-
-            <label htmlFor="booking-comments">Booking Comments: </label>
-            <input
-              type="text"
-              id="booking-comments"
-              placeholder="Enter comments here..."
-              value={this.state.comments}
-              onChange={this.handleCommentsChange}
-            />
-
-            {this.state.testTables != null &&
-              <input type="submit" value="Make booking"/>
-
-
             }
+            <br/>
 
+            {(this.state.testTables != null && this.state.testTables.length > 0) &&
 
+              <div>
+                <label htmlFor="booking-comments">Booking Comments: </label>
+                <input
+                  type="text"
+                  id="booking-comments"
+                  placeholder="Enter comments here..."
+                  value={this.state.comments}
+                  onChange={this.handleCommentsChange}
+                />
+
+                <input type="submit" value="Make booking"/>
+              </div>
+            }
 
           </form>
 
