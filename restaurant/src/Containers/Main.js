@@ -8,6 +8,7 @@ import NewCustomer from "../Components/NewCustomer";
 import NewBooking from "../Components/NewBooking";
 import EditCustomer from "../Components/EditCustomer"
 import EditBooking from "../Components/EditBooking"
+import NewBookingAndCustomer from "../Components/NewBookingAndCustomer";
 
 class Main extends Component{
 
@@ -107,6 +108,7 @@ class Main extends Component{
                           return <EditBooking booking={booking} handleBookingUpdate={this.handleBookingUpdate}/>
                         }}/>
                         <Route path="/bookings" render={() => <AllBookings bookings={this.state.bookings} handleDateFilter={this.handleDateFilter} />} />
+                        <Route path="/test" render={() => <NewBookingAndCustomer customers={this.state.customers}/>} />
                     </Switch>
                 </Fragment>
             </Router>
